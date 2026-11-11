@@ -161,3 +161,11 @@
 
 @media (max-width:1180px){.hero--space .hero__grid{display:block}.hero__rings{top:30%}}
 @media (max-width:1180px){.site-header .nav{background:#070d2e;border-top-color:rgba(255,255,255,.1);box-shadow:0 1.2rem 2rem rgba(0,0,0,.5)}}
+@media (max-width:720px){.stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}.stats>div,.stats>div:last-child{padding:.9rem}.about__vision{padding:1rem}}
+@media (max-width:1180px){.about__art{position:relative;inset:auto;width:auto;margin:var(--section) var(--gutter) 0;aspect-ratio:1025/640}.about__art img{-webkit-mask-image:none;mask-image:none}}
+@media (max-width:1180px){.about__art--light{aspect-ratio:auto;margin-inline:auto;width:min(100% - 2*var(--gutter),34rem)}}
+@media (max-width:720px){.orbit-card{padding:.35rem .55rem .35rem .35rem;gap:.4rem;border-radius:.7rem}.orbit-card b{font-size:.7rem}.orbit-card small{display:none}.orbit-card .i{width:1.6rem;height:1.6rem;padding:.35rem;border-radius:.5rem}.orbit__pulse i{left:-7rem;top:-7rem;width:14rem;height:14rem}}
+@media (max-width:720px){.orbit-widget{display:none}}
+@media (max-width:720px){.about__art--light{margin-top:1.5rem;margin-bottom:-2.5rem}}
+@media (max-width:1180px){.hero--space .hero__row{display:block;margin-top:3.5rem}}
+@media (max-width:720px){.hero--space .hero__row{margin-top:4rem}.hero--space .rotator{max-width:100%}}
