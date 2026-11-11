@@ -484,12 +484,15 @@
 .orbit-widget--chip .i{width:1.1rem;height:1.1rem;color:#16a37a}
 @media (prefers-reduced-motion:reduce){.orbit-widget,.pipe b.run,.orbit__sphere{animation:none}}
 /* Home hero: centered copy */
-.hero--space .hero__row{display:block;margin-top:6rem;text-align:center}
+.hero--space .hero__row{display:block;margin-top:4rem;text-align:center}
 .hero--space .hero__copy{max-width:58rem;margin-inline:auto}
 .hero--space .hero__title{max-width:none;margin-top:1rem}
 .hero--space .rotator{margin:.1em auto 0}
-.hero--space .hero__cta{justify-content:center;margin-top:2rem}
+.hero--space .hero__cta{justify-content:center;margin-top:2.5rem}
 /* Home hero: static pins, one-line heading */
 .hero--space .pin{animation:none}
 @media (min-width:1181px){.hero--space .hero__copy{max-width:none}.hero--space .hero__title{white-space:nowrap}}
 .hero--space #heroTitle{max-width:none}
+@media (min-width:1181px){.hero--space{padding-bottom:calc(3.3rem + 12.9vw)}}
+.hero--space .hero__pins,.hero--space .pin,.hero--space .pin *{animation:none!important;transition:none!important;transform:none}
+.hero--space .pin--c .pin__cur,.hero--space .pin--a .pin__cur,.hero--space .pin--f .pin__cur{transform:scaleY(-1)}
