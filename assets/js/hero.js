@@ -1,4 +1,4 @@
-/* Hero: typed headline word and pins that lean toward the pointer */
+/* Hero: typed headline word */
 (function () {
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var el = document.getElementById('heroRotator');
@@ -13,14 +13,5 @@
       n += del ? -1 : 1;
       setTimeout(step, wait);
     })();
-  }
-  var pins = document.querySelector('.hero__pins');
-  var hero = document.querySelector('.hero');
-  if (pins && !calm && window.matchMedia('(hover:hover)').matches) {
-    pins.style.transition = 'transform .5s ease-out';
-    hero.addEventListener('pointermove', function (e) {
-      var x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
-      pins.style.transform = 'translate(' + (x * 16).toFixed(1) + 'px,' + (y * 12).toFixed(1) + 'px)';
-    });
   }
 })();
