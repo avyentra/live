@@ -67,10 +67,10 @@
 
   /* About: drifting network of light points, runs only while on screen */
   var cv = document.getElementById('netCanvas');
-  if (!cv || window.innerWidth < 821) return; // skipped on phones to keep them fast
+  if (!cv || matchMedia('(max-width:820px)').matches) return; // skipped on phones to keep them fast
   var ctx = cv.getContext('2d'), W = 0, H = 0, pts = [], on = false, dpr = Math.min(devicePixelRatio || 1, 2);
-  function size() {
-    W = cv.offsetWidth; H = cv.offsetHeight;
+  function size(w, h) {
+    W = w; H = h;
     cv.width = W * dpr; cv.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var n = Math.round(Math.min(46, W / 34));
@@ -97,10 +97,13 @@
     }
     requestAnimationFrame(draw);
   }
-  size();
-  window.addEventListener('resize', size);
+  // Sizes come from the observers, so nothing reads layout on page load (no forced reflow)
+  new ResizeObserver(function (es) {
+    var r = es[0].contentRect;
+    if (r.width && (Math.round(r.width) !== W || Math.round(r.height) !== H)) size(Math.round(r.width), Math.round(r.height));
+  }).observe(cv);
   new IntersectionObserver(function (es) {
     var v = es[0].isIntersecting;
-    if (v && !on) { on = true; draw(); } else if (!v) on = false;
+    if (v && !on) { on = true; requestAnimationFrame(draw); } else if (!v) on = false;
   }).observe(cv);
 })();

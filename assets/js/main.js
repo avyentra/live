@@ -21,9 +21,12 @@
   var nav = document.getElementById('nav');
   var toggle = document.getElementById('navToggle');
 
-  function onScroll() { header.classList.toggle('is-stuck', window.scrollY > 24); }
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  // Sticky header shadow: watch a 1px marker at the top instead of reading scroll position (no forced layout)
+  var mark = document.createElement('i');
+  mark.setAttribute('aria-hidden', 'true');
+  mark.style.cssText = 'position:absolute;top:24px;left:0;width:1px;height:1px;pointer-events:none';
+  document.body.prepend(mark);
+  new IntersectionObserver(function (es) { header.classList.toggle('is-stuck', !es[0].isIntersecting); }).observe(mark);
 
   function setMenu(open) {
     nav.classList.toggle('is-open', open);
@@ -48,8 +51,11 @@
     activate(pick);
   }
   if (onHome) {
-    spyScroll();
-    window.addEventListener('scroll', spyScroll, { passive: true });
+    // Run in an animation frame so reading positions never forces an extra layout
+    var spyQ = false;
+    var spyTick = function () { if (spyQ) return; spyQ = true; requestAnimationFrame(function () { spyQ = false; spyScroll(); }); };
+    window.addEventListener('load', spyTick);
+    window.addEventListener('scroll', spyTick, { passive: true });
   }
 
   /* Quote form: checks the fields, then emails the enquiry through send-enquiry.php. */
