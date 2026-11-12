@@ -14,9 +14,7 @@
   }
   function go(){if(!ticking){ticking=true;requestAnimationFrame(run)}}
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){for(var i=0;i<w.length;i++)w[i].classList.add('on');if(fg)fg.style.setProperty('--o',0);return}
-  addEventListener('scroll',go,{passive:true});addEventListener('resize',go);
-  // first paint of the words waits until the block is near the screen, so page load never forces layout
-  new IntersectionObserver(function(e){if(e[0].isIntersecting)go()},{rootMargin:'200px 0px'}).observe(say);
+  addEventListener('scroll',go,{passive:true});addEventListener('resize',go);run();
 })();
 (function(){
   var calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -66,7 +64,7 @@
     p.addEventListener('focus',function(){hold=true;pan.classList.remove('auto');show(i)});
   });
   if(pan){pan.addEventListener('mouseleave',function(){hold=false});pan.addEventListener('focusout',function(){hold=false})}
-  if(pan&&!calm&&matchMedia('(min-width:1181px)').matches){
+  if(pan&&!calm&&innerWidth>1180){
     var po=new IntersectionObserver(function(es){
       clearInterval(tm);
       if(es[0].isIntersecting){pan.classList.add('auto');tm=setInterval(function(){if(!hold&&!document.hidden){pan.classList.add('auto');show((cur+1)%ps.length)}},4000)}
@@ -83,8 +81,7 @@
     if(jr){var r=jr.getBoundingClientRect(),q=Math.min(1,Math.max(0,(h*.9-r.top)/(h*.6)));
       stops.forEach(function(s,i){s.classList.toggle('on',calm||q>=i/(stops.length-1)-.02)})}
   }
-  addEventListener('scroll',function(){if(!busy){busy=true;requestAnimationFrame(sc)}},{passive:true});
-  if(scrollY>0)addEventListener('load',function(){requestAnimationFrame(sc)});
+  addEventListener('scroll',function(){if(!busy){busy=true;requestAnimationFrame(sc)}},{passive:true});sc();
   var hero=document.querySelector('.ab-hero');
   var win=document.querySelector('.st__win');
   if(hero&&win&&!calm&&matchMedia('(pointer:fine)').matches){

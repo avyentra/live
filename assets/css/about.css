@@ -348,3 +348,9 @@
 .tm__c:hover::after{transform:scaleX(.25)}
 .tm__c:hover .tm__ph img,.tm__c:hover .tm__sil{transform:none}
 .tm__so a:hover,.tm__so a:focus-visible{transform:none}
+
+/* Principles: photo backgrounds */
+.pan__art{display:none}
+.pan img{z-index:-2}
+.pan li::before{background:linear-gradient(180deg,rgba(10,14,60,.25) 0%,rgba(8,10,45,.55) 45%,rgba(5,8,35,.92) 100%)}
+.pan li.on::before{background:linear-gradient(180deg,rgba(10,14,60,.15) 0%,rgba(8,10,45,.5) 45%,rgba(5,8,35,.94) 100%)}
