@@ -496,3 +496,10 @@
 @media (min-width:1181px){.hero--space{padding-bottom:calc(3.3rem + 12.9vw)}}
 .hero--space .hero__pins,.hero--space .pin,.hero--space .pin *{animation:none!important;transition:none!important;transform:none}
 .hero--space .pin--c .pin__cur,.hero--space .pin--a .pin__cur,.hero--space .pin--f .pin__cur{transform:scaleY(-1)}
+
+/* Footer office address */
+.f-talk li.f-addr{align-items:flex-start}.f-talk li.f-addr a{font-weight:500;font-size:.95rem;line-height:1.5;color:#3d4766}.f-talk li.f-addr a small{margin-bottom:.15rem}
+
+/* Footer: address left, socials in Let's Talk */
+.f-mail li.f-addr{align-items:flex-start}.f-mail li.f-addr a{display:block;max-width:19rem;font-size:.95rem;line-height:1.55;color:#3d4766}.f-mail li.f-addr small{display:block;margin-bottom:.15rem;font-size:.85rem;color:var(--muted)}.f-follow{margin-top:1.4rem!important;font:600 .95rem/1 var(--head)!important;color:var(--ink)!important}.f-talk__social{margin-top:.8rem}
+.f-talk ul.f-talk__social{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.8rem}.f-talk ul.f-talk__social li{display:block}
